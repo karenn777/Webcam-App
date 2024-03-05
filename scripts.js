@@ -23,7 +23,7 @@ video.play();
 
  function paintToCanvas(){
 width = video.videoWidth;
-height = video.height;
+height = video.videoHeight;
 canvas.width = width;
  canvas.height = height;
 
@@ -46,15 +46,16 @@ canvas.width = width;
 }
  
 function takePhoto(){
-snap=0;
+snap.currentTime = 0;
 snap.play();
 
 const data = canvas.toDataURL('image/jpeg');
  const link = document.createElement('a');
  link.href = data;
- link.setAttribute('download', 'handsome');
+ link.setAttribute('download', 'whatever');
  link.innerHTML = `<img src="${data}" alt="Handsome Man" />`;
  strip.insertBefore(link, strip.firstChild);
+}
 
  function redEffect(pixels) {
     for (let i = 0; i < pixels.data.length; i+=4) {
@@ -107,7 +108,6 @@ const data = canvas.toDataURL('image/jpeg');
     return pixels;
    }
       
-}
 
 getVideo();
 
